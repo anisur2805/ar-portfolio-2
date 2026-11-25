@@ -2385,9 +2385,97 @@ img {
 	padding: var(--section-padding) 0;
 }
 
-.contact-inner {
-	max-width: 560px;
-	margin: 0 auto;
+/* Two-column contact block: pitch and direct channels on the left, form on
+   the right. This replaces the old single 560px column, which left the
+   section looking thin beside the rest of the page. */
+.contact-grid {
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	gap: 64px;
+	align-items: start;
+}
+
+.contact-lead {
+	max-width: 470px;
+	margin-bottom: 36px;
+	font-size: 1.05rem;
+	line-height: 1.75;
+	color: var(--text-secondary);
+}
+
+.contact-channels {
+	margin: 0 0 36px;
+	padding: 0;
+	list-style: none;
+	display: grid;
+	gap: 22px;
+}
+
+.contact-channels li {
+	display: flex;
+	align-items: flex-start;
+	gap: 16px;
+}
+
+.contact-channels li > i {
+	flex: 0 0 auto;
+	width: 42px;
+	height: 42px;
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	border: 1px solid var(--border-glass);
+	border-radius: 50%;
+	background: rgba(0, 209, 160, 0.06);
+	color: var(--accent-primary);
+	font-size: 15px;
+}
+
+.channel-label {
+	display: block;
+	margin-bottom: 4px;
+	font-size: 11px;
+	font-weight: 600;
+	letter-spacing: 0.1em;
+	text-transform: uppercase;
+	color: var(--text-muted);
+}
+
+.contact-channels a,
+.channel-value {
+	font-size: 1.02rem;
+	font-weight: 600;
+	color: var(--text-primary);
+	text-decoration: none;
+	transition: var(--transition);
+}
+
+.contact-channels a:hover {
+	color: var(--accent-primary);
+}
+
+.contact-socials {
+	display: flex;
+	gap: 12px;
+}
+
+.contact-socials a {
+	width: 42px;
+	height: 42px;
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	border: 1px solid var(--border-glass);
+	border-radius: 50%;
+	color: var(--text-secondary);
+	font-size: 16px;
+	transition: var(--transition);
+}
+
+.contact-socials a:hover {
+	border-color: var(--accent-primary);
+	color: var(--accent-primary);
+	transform: translateY(-3px);
 }
 
 .contact-section .section-badge {
@@ -2399,7 +2487,7 @@ img {
 	font-weight: 700;
 	color: var(--text-primary);
 	line-height: 1.1;
-	margin-bottom: 48px;
+	margin-bottom: 20px;
 	letter-spacing: -0.02em;
 }
 
@@ -2501,7 +2589,13 @@ img {
 	}
 
 	.contact-heading {
-		margin-bottom: 36px;
+		margin-bottom: 16px;
+	}
+
+	/* Stack the pitch above the form on small screens. */
+	.contact-grid {
+		grid-template-columns: 1fr;
+		gap: 44px;
 	}
 }
 

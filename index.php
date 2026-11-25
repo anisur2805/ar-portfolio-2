@@ -100,15 +100,47 @@ get_header();
 				</div>
 				<div class="logo-item">
 					<span class="logo-icon"><i class="fa-solid fa-shapes"></i></span>
-					<span class="logo-text">DIVI_NEXT</span>
+					<span class="logo-text">DIVI</span>
 				</div>
 				<div class="logo-item">
 					<span class="logo-icon"><i class="fa-brands fa-elementor"></i></span>
 					<span class="logo-text">ELEMENTOR</span>
 				</div>
 				<div class="logo-item">
+					<span class="logo-icon"><i class="fa-solid fa-hammer"></i></span>
+					<span class="logo-text">BEAVER BUILDER</span>
+				</div>
+				<div class="logo-item">
+					<span class="logo-icon"><i class="fa-solid fa-puzzle-piece"></i></span>
+					<span class="logo-text">ACF PRO</span>
+				</div>
+				<div class="logo-item">
 					<span class="logo-icon"><i class="fa-brands fa-woocommerce"></i></span>
 					<span class="logo-text">WOOCOMMERCE</span>
+				</div>
+				<div class="logo-item">
+					<span class="logo-icon"><i class="fa-brands fa-stripe-s"></i></span>
+					<span class="logo-text">STRIPE</span>
+				</div>
+				<div class="logo-item">
+					<span class="logo-icon"><i class="fa-solid fa-id-card"></i></span>
+					<span class="logo-text">MEMBERPRESS</span>
+				</div>
+				<div class="logo-item">
+					<span class="logo-icon"><i class="fa-brands fa-aws"></i></span>
+					<span class="logo-text">AMAZON S3</span>
+				</div>
+				<div class="logo-item">
+					<span class="logo-icon"><i class="fa-solid fa-bullhorn"></i></span>
+					<span class="logo-text">GOHIGHLEVEL</span>
+				</div>
+				<div class="logo-item">
+					<span class="logo-icon"><i class="fa-solid fa-cloud"></i></span>
+					<span class="logo-text">PANTHEON</span>
+				</div>
+				<div class="logo-item">
+					<span class="logo-icon"><i class="fa-solid fa-magnifying-glass-chart"></i></span>
+					<span class="logo-text">QUERY MONITOR</span>
 				</div>
 			</div>
 		</div>
@@ -506,9 +538,46 @@ get_header();
 	<!-- CONTACT SECTION -->
 	<section id="contact" class="section contact-section">
 		<div class="container">
-			<div class="contact-inner">
-				<h2 class="section-badge">CONTACT</h2>
-				<h3 class="contact-heading">Let's Create Something<br><span class="accent-text">Amazing</span></h3>
+			<div class="contact-grid">
+				<div class="contact-intro">
+					<h2 class="section-badge">CONTACT</h2>
+					<h3 class="contact-heading">Have a project<br><span class="accent-text">in mind?</span></h3>
+					<p class="contact-lead">
+						Tell me what you're building — a custom plugin, a WooCommerce store that needs
+						to be faster, or a site that has outgrown its theme. I reply within one business day.
+					</p>
+
+					<ul class="contact-channels">
+						<li>
+							<i class="fa-solid fa-envelope" aria-hidden="true"></i>
+							<div>
+								<span class="channel-label">Email</span>
+								<a href="mailto:anisur2805@gmail.com">anisur2805@gmail.com</a>
+							</div>
+						</li>
+						<li>
+							<i class="fa-solid fa-calendar-check" aria-hidden="true"></i>
+							<div>
+								<span class="channel-label">Rather talk first?</span>
+								<a href="https://calendly.com/anisur2805/30min" target="_blank" rel="noopener">Book a 30-minute call</a>
+							</div>
+						</li>
+						<li>
+							<i class="fa-solid fa-globe" aria-hidden="true"></i>
+							<div>
+								<span class="channel-label">Based in</span>
+								<span class="channel-value">Dhaka, Bangladesh &middot; GMT+6</span>
+							</div>
+						</li>
+					</ul>
+
+					<div class="contact-socials">
+						<a href="https://github.com/anisur2805" target="_blank" rel="noopener" aria-label="GitHub"><i class="fab fa-github"></i></a>
+						<a href="https://www.linkedin.com/in/anisur-anis/" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+						<a href="https://x.com/anisur2942" target="_blank" rel="noopener" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+					</div>
+				</div>
+
 				<div class="contact-form-wrapper">
 					<form id="contact-form" class="contact-form">
 						<div class="form-group">
