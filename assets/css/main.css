@@ -17,6 +17,8 @@
 	--accent-primary: #00d1a0;
 	--accent-hover: #00b389;
 	--accent-glow: rgba(0, 209, 160, 0.4);
+	--accent-tint: rgba(0, 209, 160, 0.06);
+	--accent-shadow: rgba(0, 209, 160, 0.35);
 	
 	/* Borders & Blurs */
 	--accent-purple: #9D5CFF;
@@ -97,7 +99,7 @@ h3 { font-size: clamp(1.5rem, 4vw, 2.5rem); }
 /* Anchored sections would otherwise disappear under the fixed header when
    reached from the nav. */
 #hero, #ecosystem, #philosophy, #expertise, #stack, #history,
-#projects, #open-source, #blog, #testimonials, #contact {
+#projects, #open-source, #testimonials, #contact {
 	scroll-margin-top: 96px;
 }
 
@@ -166,11 +168,13 @@ img {
 	color: var(--on-accent);
 }
 
+/* Hover steps the accent slightly darker and adds one soft glow. A neon
+   jump plus filter:brightness() read as a flicker, and the scale() made the
+   label reflow on wide buttons. */
 .btn-primary:hover {
-    background: #00ffc3; /* Brighter version of accent */
-    transform: translateY(-4px) scale(1.04);
-    box-shadow: 0 12px 30px -5px rgba(0, 255, 195, 0.5), 0 8px 12px -7px rgba(0, 255, 195, 0.4);
-    filter: brightness(1.1);
+    background: var(--accent-hover);
+    transform: translateY(-2px);
+    box-shadow: 0 12px 28px -14px var(--accent-shadow);
 }
 
 .btn-secondary {
@@ -181,9 +185,9 @@ img {
 
 .btn-secondary:hover {
 	border-color: var(--accent-primary);
-	background: rgba(0, 209, 160, 0.05);
-	transform: translateY(-3px) scale(1.02);
-    box-shadow: 0 10px 20px -10px rgba(0, 0, 0, 0.5);
+	background: var(--accent-tint);
+	transform: translateY(-2px);
+    box-shadow: 0 8px 18px -12px rgba(0, 0, 0, 0.5);
 }
 
 .btn-dark {
@@ -195,8 +199,8 @@ img {
 .btn-dark:hover {
     background: #111;
     border-color: var(--accent-primary);
-    transform: translateY(-3px) scale(1.02);
-    box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.6);
+    transform: translateY(-2px);
+    box-shadow: 0 10px 24px -10px rgba(0, 0, 0, 0.6);
 }
 
 .btn-outline {
@@ -209,8 +213,8 @@ img {
     background: #000;
     color: #fff;
     border-color: #000;
-    transform: translateY(-3px) scale(1.02);
-    box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.2);
+    transform: translateY(-2px);
+    box-shadow: 0 10px 24px -10px rgba(0, 0, 0, 0.2);
 }
 
 /* Download Resume — accent outline so it reads as a distinct action
@@ -224,8 +228,8 @@ img {
 .btn-resume:hover {
 	background: var(--accent-primary);
 	color: var(--on-accent);
-	transform: translateY(-3px) scale(1.02);
-	box-shadow: 0 10px 25px -8px rgba(0, 209, 160, 0.55);
+	transform: translateY(-2px);
+	box-shadow: 0 10px 24px -12px var(--accent-shadow);
 }
 
 .btn-resume i {
@@ -1421,31 +1425,9 @@ img {
 /* ==========================================================================
    Blog Section - 2x2 Grid
    ========================================================================== */
-.blog-section {
-	background: var(--bg-secondary);
-}
 
-.blog-grid {
-	display: grid;
-	grid-template-columns: repeat(2, 1fr);
-	gap: 24px;
-}
 
-.blog-card {
-	background: var(--bg-card);
-	border-radius: 20px;
-	overflow: hidden;
-	border: 1px solid var(--border-glass);
-	transition: all 0.4s ease;
-	cursor: pointer;
-}
 
-.blog-image {
-	width: 100%;
-	height: 220px;
-	background: var(--bg-secondary);
-	overflow: hidden;
-}
 
 .faq-item {
 	background: var(--bg-glass);
@@ -1470,52 +1452,13 @@ img {
 	text-align: left;
 }
 
-.blog-image img {
-	width: 100%;
-	height: 100%;
-	object-fit: cover;
-	transition: transform 0.3s ease;
-}
 
-.blog-card:hover .blog-image img {
-	transform: scale(1.05);
-}
 
-.blog-content {
-	padding: 32px;
-}
 
-.blog-meta {
-	display: flex;
-	gap: 12px;
-	font-size: 12px;
-	color: var(--text-muted);
-	margin-bottom: 12px;
-}
 
-.blog-category {
-	color: var(--accent-purple);
-	font-weight: 600;
-}
 
-.blog-title {
-	font-size: 1.25rem;
-	line-height: 1.4;
-	margin-bottom: 16px;
-}
 
-.blog-excerpt {
-	font-size: 0.95rem;
-	color: var(--text-secondary);
-	margin-bottom: 24px;
-	line-height: 1.6;
-}
 
-.blog-link {
-	font-size: 0.875rem;
-	font-weight: 700;
-	color: var(--accent-primary);
-}
 
 /* ==========================================================================
    History Section v2
@@ -1855,12 +1798,6 @@ img {
 /* ==========================================================================
    Blog Section v2
    ========================================================================== */
-.blog-header {
-	display: flex;
-	justify-content: space-between;
-	align-items: flex-end;
-	margin-bottom: 40px;
-}
 
 .accent-link {
 	font-weight: 600;
@@ -1868,29 +1805,9 @@ img {
 	border-bottom: 1px solid var(--accent-primary);
 }
 
-.blog-grid-v2 {
-	display: grid;
-	grid-template-columns: repeat(3, 1fr);
-	gap: 32px;
-}
 
-.blog-item h4 {
-	font-size: 1.1rem;
-	margin: 20px 0 10px;
-	line-height: 1.5;
-}
 
-.blog-item p {
-	font-size: 14px;
-	color: var(--text-secondary);
-}
 
-.blog-item-image {
-	height: 200px;
-	background: var(--bg-card);
-	border-radius: 8px;
-	border: 1px solid var(--border-glass);
-}
 
 /* ==========================================================================
    Testimonials v2
@@ -2226,7 +2143,7 @@ img {
 }
 
 @media (max-width: 768px) {
-	.stack-grid, .blog-grid-v2, .testimonial-grid-v2 {
+	.stack-grid, .testimonial-grid-v2 {
 		grid-template-columns: 1fr;
 	}
 	
@@ -2847,6 +2764,8 @@ html[data-theme="light"] {
 	--accent-primary: #008f6b;
 	--accent-hover: #00775a;
 	--accent-glow: rgba(0, 143, 107, 0.22);
+	--accent-tint: rgba(0, 143, 107, 0.07);
+	--accent-shadow: rgba(0, 143, 107, 0.3);
 
 	--border-glass: rgba(11, 18, 32, 0.1);
 	--bg-glass: rgba(11, 18, 32, 0.02);
@@ -2883,10 +2802,6 @@ html[data-theme="light"] .work-badge {
 
 html[data-theme="light"] .main-navigation {
 	border-top-color: rgba(0, 143, 107, 0.3);
-}
-
-html[data-theme="light"] .btn-resume:hover {
-	box-shadow: 0 10px 25px -8px rgba(0, 143, 107, 0.4);
 }
 
 /* ==========================================================================
