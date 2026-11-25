@@ -30,6 +30,10 @@
 </head>
 
 <body <?php body_class(); ?>>
+<?php // Keyboard users can jump straight past the navigation. ?>
+<a class="skip-link" href="#primary"><?php esc_html_e( 'Skip to content', 'anisur-portfolio' ); ?></a>
+
+<div id="page">
 <?php wp_body_open(); ?>
 
 <header class="site-header">

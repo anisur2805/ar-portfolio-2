@@ -180,6 +180,82 @@ function anisur_load_textdomain() {
 add_action( 'after_setup_theme', 'anisur_load_textdomain' );
 
 /**
+ * Front-end meta description, Open Graph and Twitter card tags.
+ *
+ * Without these a shared link renders as a blank card on LinkedIn, X and
+ * WhatsApp, which is often the first impression a recruiter gets.
+ */
+function anisur_portfolio_head_meta() {
+	if ( ! is_front_page() ) {
+		return;
+	}
+
+	$title = get_bloginfo( 'name' );
+	$desc  = __( 'Senior WordPress Developer and Architect building custom plugins, Gutenberg blocks and WooCommerce stores. 7+ years, 200+ sites, and measurable performance wins for clients in the US, UK and Germany.', 'anisur-portfolio' );
+	$url   = home_url( '/' );
+	$image = get_template_directory_uri() . '/assets/img/og-image.png';
+
+	echo '<meta name="description" content="' . esc_attr( $desc ) . '">' . "\n";
+	echo '<meta property="og:type" content="website">' . "\n";
+	echo '<meta property="og:site_name" content="' . esc_attr( $title ) . '">' . "\n";
+	echo '<meta property="og:title" content="' . esc_attr( __( 'Anisur Rahman \u{2014} Senior WordPress Developer & Architect', 'anisur-portfolio' ) ) . '">' . "\n";
+	echo '<meta property="og:description" content="' . esc_attr( $desc ) . '">' . "\n";
+	echo '<meta property="og:url" content="' . esc_url( $url ) . '">' . "\n";
+	echo '<meta property="og:image" content="' . esc_url( $image ) . '">' . "\n";
+	echo '<meta property="og:image:width" content="1200">' . "\n";
+	echo '<meta property="og:image:height" content="630">' . "\n";
+	echo '<meta name="twitter:card" content="summary_large_image">' . "\n";
+	echo '<meta name="twitter:title" content="' . esc_attr( __( 'Anisur Rahman \u{2014} Senior WordPress Developer & Architect', 'anisur-portfolio' ) ) . '">' . "\n";
+	echo '<meta name="twitter:description" content="' . esc_attr( $desc ) . '">' . "\n";
+	echo '<meta name="twitter:image" content="' . esc_url( $image ) . '">' . "\n";
+}
+add_action( 'wp_head', 'anisur_portfolio_head_meta', 5 );
+
+/**
+ * JSON-LD Person schema so search engines can build a profile for the author.
+ */
+function anisur_portfolio_json_ld() {
+	if ( ! is_front_page() ) {
+		return;
+	}
+
+	$data = array(
+		'@context'    => 'https://schema.org',
+		'@type'       => 'Person',
+		'name'        => 'Anisur Rahman',
+		'jobTitle'    => __( 'Senior WordPress Developer & Architect', 'anisur-portfolio' ),
+		'description' => __( 'WordPress developer with 7+ years building custom plugins, Gutenberg blocks and WooCommerce stores for clients in the US, UK and Germany.', 'anisur-portfolio' ),
+		'url'         => home_url( '/' ),
+		'image'       => get_template_directory_uri() . '/assets/img/og-image.png',
+		'email'       => 'mailto:anisur2805@gmail.com',
+		'address'     => array(
+			'addressLocality' => 'Joypurhat',
+			'addressCountry'  => 'BD',
+		),
+		'sameAs'      => array(
+			'https://github.com/anisur2805',
+			'https://www.linkedin.com/in/anisur-anis/',
+			'https://x.com/anisur2942',
+		),
+		'knowsAbout'  => array( 'WordPress', 'PHP', 'WooCommerce', 'Gutenberg', 'JavaScript', 'Performance' ),
+	);
+
+	echo '<script type="application/ld+json">' . wp_json_encode( $data ) . '</script>' . "\n";
+}
+add_action( 'wp_head', 'anisur_portfolio_json_ld', 20 );
+
+/**
+ * Favicon link so the theme ships with its own mark.
+ */
+function anisur_portfolio_favicon() {
+	$icon = get_template_directory_uri() . '/assets/img/favicon-512.png';
+
+	echo '<link rel="icon" type="image/png" sizes="512x512" href="' . esc_url( $icon ) . '">' . "\n";
+	echo '<link rel="apple-touch-icon" href="' . esc_url( $icon ) . '">' . "\n";
+}
+add_action( 'wp_head', 'anisur_portfolio_favicon', 4 );
+
+/**
  * Enqueue scripts and styles.
  */
 function anisur_portfolio_scripts() {

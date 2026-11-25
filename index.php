@@ -36,7 +36,7 @@ get_header();
 				</div>
 			</div>
 			
-			<div class="hero-visual">
+			<div class="hero-visual" aria-hidden="true">
 				<!-- Decorative Code Block -->
 				<div class="code-block">
 					<div class="code-header">
@@ -436,9 +436,9 @@ get_header();
 					<article class="case-study-card">
 						<div class="case-study-image" style="background: <?php echo esc_attr( $item['bg_color'] ); ?>;">
 							<?php if ( strpos( $item['image'], '.svg' ) !== false || strpos( $item['image'], '.gif' ) !== false ) : ?>
-								<img src="<?php echo esc_url( $item['image'] ); ?>" alt="<?php echo esc_attr( $item['title'] ); ?>" style="width: 100%; height: 100%; object-fit: cover;">
+								<img src="<?php echo esc_url( $item['image'] ); ?>" alt="<?php echo esc_attr( $item['title'] ); ?>" loading="lazy" decoding="async" style="width: 100%; height: 100%; object-fit: cover;">
 							<?php else : ?>
-								<img src="<?php echo esc_url( $item['image'] ); ?>" alt="<?php echo esc_attr( $item['title'] ); ?>" style="width: 100%; height: 100%; object-fit: cover;">
+								<img src="<?php echo esc_url( $item['image'] ); ?>" alt="<?php echo esc_attr( $item['title'] ); ?>" loading="lazy" decoding="async" style="width: 100%; height: 100%; object-fit: cover;">
 							<?php endif; ?>
 						</div>
 						<div class="case-study-content">
@@ -469,61 +469,72 @@ get_header();
 		<div class="container">
 			<div class="open-source-grid">
 				<div class="open-source-info">
-					<h2 class="section-badge"><?php esc_html_e( 'CONTRIBUTIONS', 'anisur-portfolio' ); ?></h2>
-					<h3 class="section-title"><?php esc_html_e( 'Open Source Contribution', 'anisur-portfolio' ); ?></h3>
-					<p><?php esc_html_e( 'I actively contribute to the WordPress core and maintain several high-traffic plugins on GitHub. I believe in giving back to the community that powers the web. My focus is on creating developer-friendly tools and modular architectures.', 'anisur-portfolio' ); ?></p>
-					
+					<h2 class="section-badge"><?php esc_html_e( 'OPEN SOURCE', 'anisur-portfolio' ); ?></h2>
+					<h3 class="section-title"><?php esc_html_e( 'Plugins &amp; tools I publish', 'anisur-portfolio' ); ?></h3>
+					<p><?php esc_html_e( 'Since 2015 I have shipped 78 public repositories — WordPress plugins, Gutenberg blocks and TypeScript tooling. The mini-cart plugin below is the one that took off; the rest are what I build with clients every day.', 'anisur-portfolio' ); ?></p>
+
 					<div class="github-stats">
 						<div class="stat">
-							<span class="stat-value">450+</span>
-							<span class="stat-label"><?php esc_html_e( 'GIT COMMITS YTD', 'anisur-portfolio' ); ?></span>
+							<span class="stat-value">78</span>
+							<span class="stat-label"><?php esc_html_e( 'Public repositories', 'anisur-portfolio' ); ?></span>
 						</div>
 						<div class="stat">
-							<span class="stat-value">12</span>
-							<span class="stat-label"><?php esc_html_e( 'ACTIVE PLUGINS', 'anisur-portfolio' ); ?></span>
+							<span class="stat-value">23</span>
+							<span class="stat-label"><?php esc_html_e( 'Stars earned', 'anisur-portfolio' ); ?></span>
+						</div>
+						<div class="stat">
+							<span class="stat-value">21</span>
+							<span class="stat-label"><?php esc_html_e( 'Followers', 'anisur-portfolio' ); ?></span>
 						</div>
 					</div>
+
+					<p class="github-handle">
+						<i class="fa-brands fa-github" aria-hidden="true"></i>
+						<a href="https://github.com/anisur2805" target="_blank" rel="noopener">github.com/anisur2805</a>
+					</p>
 				</div>
-				
+
 				<div class="open-source-visual">
-					<!-- Featured Contribution: BootScore -->
 					<div class="contribution-card featured">
-						<div class="cont-badge"><?php esc_html_e( 'FEATURED CONTRIBUTION', 'anisur-portfolio' ); ?></div>
+						<div class="cont-badge"><?php esc_html_e( 'Most starred · 14 stars', 'anisur-portfolio' ); ?></div>
 						<div class="cont-header">
 							<div class="repo-info">
-								<span class="repo-user"><?php esc_html_e( 'bootscore /', 'anisur-portfolio' ); ?> </span>
-								<span class="repo-name accent-text"><?php esc_html_e( 'bootscore', 'anisur-portfolio' ); ?></span>
+								<span class="repo-user"><?php esc_html_e( 'anisur2805 /', 'anisur-portfolio' ); ?> </span>
+								<span class="repo-name accent-text">woocommerce-mini-cart-ajax-plus-minus</span>
 							</div>
-							<span class="cont-status"><?php esc_html_e( 'Active Contributor', 'anisur-portfolio' ); ?></span>
+							<span class="cont-status"><?php esc_html_e( 'PHP', 'anisur-portfolio' ); ?></span>
 						</div>
-						<p class="cont-desc"><?php esc_html_e( 'A powerful Bootstrap 5 based WordPress starter theme. I actively contribute to the core development and theme ecosystem.', 'anisur-portfolio' ); ?></p>
+						<p class="cont-desc"><?php esc_html_e( 'A WooCommerce mini cart sidebar with AJAX price and amount updates — no page reload, no jQuery dependency.', 'anisur-portfolio' ); ?></p>
 						<div class="cont-action">
-							<a href="https://github.com/bootscore/bootscore" target="_blank" class="accent-link"><?php esc_html_e( 'View Source →', 'anisur-portfolio' ); ?></a>
+							<a href="https://github.com/anisur2805/woocommerce-mini-cart-ajax-plus-minus" target="_blank" rel="noopener" class="accent-link"><?php esc_html_e( 'View Source →', 'anisur-portfolio' ); ?></a>
 						</div>
 					</div>
 
-					<!-- Other Plugins -->
-					<div class="contribution-cards-stack">
-						<div class="contribution-card secondary">
-							<div class="cont-header">
-								<div class="repo-info">
-									<span class="repo-user"><?php esc_html_e( 'anisur2805 /', 'anisur-portfolio' ); ?> </span>
-									<span class="repo-name accent-text"><?php esc_html_e( 'arpc-popup-creator', 'anisur-portfolio' ); ?></span>
-								</div>
-								<span class="cont-status"><?php esc_html_e( 'Active', 'anisur-portfolio' ); ?></span>
-							</div>
-							<div class="cont-bar solo">
-								<div class="cont-fill php" style="width: 75%;" title="<?php esc_attr_e( '75% PHP', 'anisur-portfolio' ); ?>"></div>
-								<div class="cont-fill css" style="width: 15%;" title="<?php esc_attr_e( '15% CSS', 'anisur-portfolio' ); ?>"></div>
-								<div class="cont-fill js" style="width: 10%;" title="<?php esc_attr_e( '10% JS', 'anisur-portfolio' ); ?>"></div>
-							</div>
-							<div class="cont-footer">
-								<span><?php esc_html_e( '75% PHP', 'anisur-portfolio' ); ?></span>
-								<span><?php esc_html_e( '15% CSS', 'anisur-portfolio' ); ?></span>
-								<span><?php esc_html_e( '10% JS', 'anisur-portfolio' ); ?></span>
-							</div>
-						</div>
-
+					<div class="repo-chips">
+						<a class="repo-chip" href="https://github.com/anisur2805/ar-back-to-top" target="_blank" rel="noopener">
+							<span class="repo-chip-name">ar-back-to-top</span>
+							<span class="repo-chip-lang">PHP</span>
+						</a>
+						<a class="repo-chip" href="https://github.com/anisur2805/clandevs-smart-catalog-filters" target="_blank" rel="noopener">
+							<span class="repo-chip-name">clandevs-smart-catalog-filters</span>
+							<span class="repo-chip-lang">PHP</span>
+						</a>
+						<a class="repo-chip" href="https://github.com/anisur2805/proofpulse" target="_blank" rel="noopener">
+							<span class="repo-chip-name">proofpulse</span>
+							<span class="repo-chip-lang">PHP</span>
+						</a>
+						<a class="repo-chip" href="https://github.com/anisur2805/commerce-blocks" target="_blank" rel="noopener">
+							<span class="repo-chip-name">commerce-blocks</span>
+							<span class="repo-chip-lang">PHP</span>
+						</a>
+						<a class="repo-chip" href="https://github.com/anisur2805/tabskit-pro" target="_blank" rel="noopener">
+							<span class="repo-chip-name">tabskit-pro</span>
+							<span class="repo-chip-lang">PHP</span>
+						</a>
+						<a class="repo-chip" href="https://github.com/anisur2805/blockforge" target="_blank" rel="noopener">
+							<span class="repo-chip-name">blockforge</span>
+							<span class="repo-chip-lang">TypeScript</span>
+						</a>
 					</div>
 				</div>
 			</div>
@@ -622,11 +633,11 @@ get_header();
 				<div class="contact-form-wrapper">
 					<form id="contact-form" class="contact-form">
 						<div class="form-group">
-							<label for="contact-name"><?php esc_html_e( 'Name', 'anisur-portfolio' ); ?></label>
+							<label for="contact-name"><?php esc_html_e( 'Name', 'anisur-portfolio' ); ?><span class="req-mark" aria-hidden="true">*</span></label>
 							<input type="text" id="contact-name" name="name" placeholder="<?php esc_attr_e( 'Your Name', 'anisur-portfolio' ); ?>" required>
 						</div>
 						<div class="form-group">
-							<label for="contact-email"><?php esc_html_e( 'Email', 'anisur-portfolio' ); ?></label>
+							<label for="contact-email"><?php esc_html_e( 'Email', 'anisur-portfolio' ); ?><span class="req-mark" aria-hidden="true">*</span></label>
 							<input type="email" id="contact-email" name="email" placeholder="<?php esc_attr_e( 'Your@email.com', 'anisur-portfolio' ); ?>" required>
 						</div>
 						<div class="form-group">
@@ -638,10 +649,10 @@ get_header();
 							<input type="text" id="contact-subject" name="subject" placeholder="<?php esc_attr_e( 'Project type, topic, or question', 'anisur-portfolio' ); ?>">
 						</div>
 						<div class="form-group">
-							<label for="contact-message"><?php esc_html_e( 'Message', 'anisur-portfolio' ); ?></label>
+							<label for="contact-message"><?php esc_html_e( 'Message', 'anisur-portfolio' ); ?><span class="req-mark" aria-hidden="true">*</span></label>
 							<textarea id="contact-message" name="message" rows="5" placeholder="<?php esc_attr_e( 'Your Message', 'anisur-portfolio' ); ?>" required></textarea>
 						</div>
-						<div class="form-group contact-hp">
+						<div class="form-group contact-hp" aria-hidden="true">
 							<label for="contact-website"><?php esc_html_e( 'Website', 'anisur-portfolio' ); ?></label>
 							<input type="text" id="contact-website" name="website" autocomplete="off" tabindex="-1">
 						</div>
