@@ -35,6 +35,11 @@
 	/* Effects */
 	--shadow-card: 0 4px 20px rgba(0, 0, 0, 0.5);
 	--transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+
+	/* Chrome surfaces */
+	--header-bg: rgba(4, 7, 11, 0.65);
+	--header-bg-scrolled: rgba(4, 7, 11, 0.96);
+	--on-accent: #000000;
 }
 
 /* ==========================================================================
@@ -158,7 +163,7 @@ img {
 
 .btn-primary {
 	background: var(--accent-primary);
-	color: #000;
+	color: var(--on-accent);
 }
 
 .btn-primary:hover {
@@ -218,7 +223,7 @@ img {
 
 .btn-resume:hover {
 	background: var(--accent-primary);
-	color: #04070b;
+	color: var(--on-accent);
 	transform: translateY(-3px) scale(1.02);
 	box-shadow: 0 10px 25px -8px rgba(0, 209, 160, 0.55);
 }
@@ -237,12 +242,12 @@ img {
 	width: 100%;
 	z-index: 1000;
 	padding: 24px 0;
-	background: rgba(4, 7, 11, 0.65);
+	background: var(--header-bg);
 	transition: var(--transition);
 }
 
 .site-header.scrolled {
-	background: rgba(4, 7, 11, 0.96);
+	background: var(--header-bg-scrolled);
 	backdrop-filter: var(--backdrop-blur);
 	padding: 16px 0;
 	border-bottom: 1px solid var(--border-glass);
@@ -283,6 +288,18 @@ img {
 .btn-sm {
 	padding: 10px 20px;
 	font-size: 13px;
+}
+
+.header-cta {
+	display: flex;
+	align-items: center;
+	gap: 10px;
+}
+
+/* The resume link inside the mobile panel only appears once the nav has
+   collapsed into a dropdown. */
+.nav-resume-link {
+	display: none;
 }
 
 .nav-icon.active {
@@ -359,6 +376,9 @@ img {
 
 	.header-cta {
 		margin-left: auto;
+		display: flex;
+		align-items: center;
+		gap: 10px;
 	}
 
 	.header-cta .btn-sm {
@@ -366,6 +386,17 @@ img {
 		font-size: 12px;
 		letter-spacing: 0.06em;
 		white-space: nowrap;
+	}
+
+	/* The header is tight on phones, so the resume button moves into the
+	   dropdown panel instead. */
+	.header-resume-btn {
+		display: none;
+	}
+
+	.nav-resume-link {
+		display: inline-flex;
+		margin: 8px 20px 16px;
 	}
 
 	.nav-toggle {
@@ -383,11 +414,13 @@ img {
 		right: 0;
 		width: 100%;
 		display: none;
-		background: rgba(4, 7, 11, 0.98);
-		backdrop-filter: var(--backdrop-blur);
-		-webkit-backdrop-filter: var(--backdrop-blur);
+		/* The header itself is near-black, so a near-black dropdown vanished
+		   into it. Use the raised card colour plus an accent rule so the panel
+		   reads as its own surface. */
+		background: var(--bg-card);
+		border-top: 1px solid rgba(0, 209, 160, 0.22);
 		border-bottom: 1px solid var(--border-glass);
-		box-shadow: 0 24px 40px -20px rgba(0, 0, 0, 0.85);
+		box-shadow: 0 30px 60px -18px rgba(0, 0, 0, 0.9);
 	}
 
 	.main-navigation.is-open {
@@ -2603,15 +2636,28 @@ img {
    Design polish — tighter spacing rhythm on small screens,
    plus the quantified credibility band under the hero.
    ========================================================================== */
+/* Tablet and below: 84px of section padding stacked into 168px between two
+   sections, which read as a gap rather than a rhythm. */
+@media screen and (max-width: 1024px) {
+	:root {
+		--section-padding: 66px;
+	}
+
+	.expertise-grid,
+	.stack-grid {
+		margin-top: 36px;
+	}
+}
+
 @media screen and (max-width: 900px) {
 	:root {
-		--section-padding: 64px;
+		--section-padding: 58px;
 	}
 }
 
 @media screen and (max-width: 640px) {
 	:root {
-		--section-padding: 52px;
+		--section-padding: 46px;
 	}
 
 	.hero-section {
@@ -2690,4 +2736,191 @@ img {
 	.stat-item + .stat-item::before {
 		display: none;
 	}
+}
+
+/* ==========================================================================
+   Work section — what has actually shipped. Kept separate from the case
+   studies section: a case study is the breakdown of one problem, the work
+   section is the list of things that exist and are live.
+   ========================================================================== */
+.work-grid {
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+	gap: 24px;
+	margin-top: 56px;
+}
+
+.work-card {
+	background: var(--bg-card);
+	border: 1px solid var(--border-glass);
+	border-radius: var(--card-radius);
+	padding: 32px 28px;
+	transition: var(--transition);
+}
+
+.work-card:hover {
+	border-color: rgba(0, 209, 160, 0.2);
+	transform: translateY(-4px);
+}
+
+.work-card-label {
+	display: block;
+	margin-bottom: 22px;
+	font-size: 11px;
+	font-weight: 600;
+	letter-spacing: 0.14em;
+	text-transform: uppercase;
+	color: var(--accent-primary);
+}
+
+.work-list {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+	display: grid;
+	gap: 14px;
+}
+
+.work-list li {
+	display: flex;
+	align-items: center;
+	gap: 12px;
+	font-size: 0.95rem;
+	color: var(--text-secondary);
+}
+
+.work-list i {
+	flex: 0 0 auto;
+	width: 18px;
+	text-align: center;
+	color: var(--text-muted);
+	font-size: 13px;
+}
+
+.work-list a {
+	color: var(--text-primary);
+	font-weight: 600;
+	text-decoration: none;
+	transition: var(--transition);
+}
+
+.work-list a:hover {
+	color: var(--accent-primary);
+}
+
+.work-badge {
+	margin-left: auto;
+	padding: 2px 9px;
+	border: 1px solid rgba(0, 209, 160, 0.35);
+	border-radius: 999px;
+	font-size: 11px;
+	font-weight: 700;
+	color: var(--accent-primary);
+	white-space: nowrap;
+}
+
+@media screen and (max-width: 1024px) {
+	.work-grid {
+		grid-template-columns: 1fr;
+		gap: 20px;
+		margin-top: 44px;
+	}
+}
+
+/* ==========================================================================
+   Colour theme — light variant
+
+   The mint accent is darkened for light mode on purpose: #00d1a0 on a white
+   background only reaches roughly 1.9:1, which fails WCAG AA for text and
+   icons. #008f6b keeps the same hue but lands near 4.6:1 on white.
+   ========================================================================== */
+html[data-theme="light"] {
+	--bg-primary: #f4f6f8;
+	--bg-secondary: #ffffff;
+	--bg-card: #ffffff;
+	--bg-card-hover: #f8fafc;
+
+	--text-primary: #0b1220;
+	--text-secondary: #4a5a6a;
+	--text-muted: #7b8794;
+
+	--accent-primary: #008f6b;
+	--accent-hover: #00775a;
+	--accent-glow: rgba(0, 143, 107, 0.22);
+
+	--border-glass: rgba(11, 18, 32, 0.1);
+	--bg-glass: rgba(11, 18, 32, 0.02);
+
+	--shadow-card: 0 6px 24px rgba(15, 23, 42, 0.08);
+
+	--header-bg: rgba(255, 255, 255, 0.85);
+	--header-bg-scrolled: rgba(255, 255, 255, 0.96);
+	--on-accent: #ffffff;
+}
+
+/* Accent tints that were written as literal rgba values need a light
+   counterpart, otherwise they wash out on a pale background. */
+html[data-theme="light"] .hero-badge {
+	background: rgba(0, 143, 107, 0.1);
+}
+
+html[data-theme="light"] .hero-section::before {
+	background: radial-gradient(circle, rgba(0, 143, 107, 0.13) 0%, rgba(0, 143, 107, 0) 68%);
+}
+
+html[data-theme="light"] .contact-channels li > i {
+	background: rgba(0, 143, 107, 0.08);
+}
+
+html[data-theme="light"] .work-card:hover,
+html[data-theme="light"] .contact-form-wrapper:hover {
+	border-color: rgba(0, 143, 107, 0.3);
+}
+
+html[data-theme="light"] .work-badge {
+	border-color: rgba(0, 143, 107, 0.4);
+}
+
+html[data-theme="light"] .main-navigation {
+	border-top-color: rgba(0, 143, 107, 0.3);
+}
+
+html[data-theme="light"] .btn-resume:hover {
+	box-shadow: 0 10px 25px -8px rgba(0, 143, 107, 0.4);
+}
+
+/* ==========================================================================
+   Colour theme toggle
+   ========================================================================== */
+.theme-toggle {
+	width: 42px;
+	height: 42px;
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	flex: 0 0 auto;
+	padding: 0;
+	background: transparent;
+	border: 1px solid var(--border-glass);
+	border-radius: 4px;
+	color: var(--text-secondary);
+	cursor: pointer;
+	transition: var(--transition);
+}
+
+.theme-toggle:hover {
+	border-color: var(--accent-primary);
+	color: var(--accent-primary);
+}
+
+.theme-toggle .theme-icon-dark {
+	display: none;
+}
+
+html[data-theme="light"] .theme-toggle .theme-icon-light {
+	display: none;
+}
+
+html[data-theme="light"] .theme-toggle .theme-icon-dark {
+	display: inline-block;
 }

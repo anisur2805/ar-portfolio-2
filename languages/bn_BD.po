@@ -1,0 +1,17 @@
+msgid ""
+msgstr ""
+"Content-Type: text/plain; charset=UTF-8\n"
+"Language: bn_BD\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+msgid "Available for New Opportunities"
+msgstr "নতুন সুযোগের জন্য প্রস্তুত"
+
+msgid "Senior WordPress"
+msgstr "সিনিয়র ওয়ার্ডপ্রেস"
+
+msgid "CONTACT"
+msgstr "যোগাযোগ"
+
+msgid "Have a project"
+msgstr "একটি প্রকল্প আছে?"

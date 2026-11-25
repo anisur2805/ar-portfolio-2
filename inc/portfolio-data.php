@@ -1,10 +1,15 @@
 <?php
 /**
- * Portfolio Data Source
+ * Portfolio data source.
  *
- * Returns an array of portfolio items.
+ * @package Anisur_Portfolio
  */
 
+/**
+ * Return the case study items shown on the front page.
+ *
+ * @return array
+ */
 function anisur_get_portfolio_items() {
 	return array(
 		array(

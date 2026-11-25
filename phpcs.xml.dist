@@ -1,0 +1,45 @@
+<?xml version="1.0"?>
+<ruleset name="Anisur Portfolio">
+	<description>Coding standards for the Anisur Portfolio theme.</description>
+
+	<!-- Scan every PHP file in the theme. -->
+	<file>.</file>
+
+	<exclude-pattern>/vendor/*</exclude-pattern>
+	<exclude-pattern>/node_modules/*</exclude-pattern>
+	<exclude-pattern>/.git/*</exclude-pattern>
+
+	<!-- Only PHP is linted; CSS and JS have their own tooling. -->
+	<arg name="extensions" value="php"/>
+	<arg name="basepath" value="."/>
+	<arg name="colors"/>
+	<arg name="parallel" value="8"/>
+	<arg value="sp"/>
+
+	<!--
+		The full WordPress standard: WordPress-Core, WordPress-Docs and
+		WordPress-Extra (which covers the security sniffs).
+	-->
+	<rule ref="WordPress">
+		<!--
+			Third-party APIs own their property names. PHPMailer's $AltBody and
+			$CharSet cannot be renamed to snake_case without breaking the
+			library, so those two lines carry a targeted ignore instead.
+		-->
+	</rule>
+
+	<!-- The theme targets PHP 7.4+ (WordPress 6.x minimum). -->
+	<config name="testVersion" value="7.4-"/>
+
+	<!-- Text domain must match the one in style.css. -->
+	<rule ref="WordPress.WP.I18n">
+		<properties>
+			<property name="text_domain" type="array" value="anisur-portfolio"/>
+		</properties>
+	</rule>
+
+	<!-- WordPress filenames should be lowercase. -->
+	<rule ref="WordPress.Files.FileName">
+		<exclude-pattern>/inc/*</exclude-pattern>
+	</rule>
+</ruleset>

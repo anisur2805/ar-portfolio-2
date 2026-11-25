@@ -1,0 +1,919 @@
+# Copyright (C) 2026 Anisur Rahman
+# This file is distributed under the same license as the Anisur Portfolio Pro - FInal theme.
+msgid ""
+msgstr ""
+"Project-Id-Version: Anisur Portfolio Pro - FInal 1.0.0\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/theme/ar-portfolio\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"POT-Creation-Date: 2026-11-25T12:40:56+00:00\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"X-Generator: WP-CLI 2.12.0\n"
+"X-Domain: anisur-portfolio\n"
+
+#. Theme Name of the theme
+#: style.css
+msgid "Anisur Portfolio Pro - FInal"
+msgstr ""
+
+#. Theme URI of the theme
+#: style.css
+msgid "https://github.com/anisur2805/anisur-portfolio"
+msgstr ""
+
+#. Description of the theme
+#: style.css
+msgid "A high-performance, developer-first portfolio theme built for Senior WordPress Architects. Features a dark-mode premium aesthetic, clean typography, and zero bloat."
+msgstr ""
+
+#. Author of the theme
+#: style.css
+msgid "Anisur Rahman"
+msgstr ""
+
+#. Author URI of the theme
+#: style.css
+msgid "https://github.com/anisur2805"
+msgstr ""
+
+#: footer.php:15
+#: header.php:39
+msgid "Anisur"
+msgstr ""
+
+#: footer.php:15
+#: header.php:39
+msgid "Rahman."
+msgstr ""
+
+#: footer.php:17
+msgid "Crafting high-performance WordPress systems and enterprise-grade plugin architectures."
+msgstr ""
+
+#: footer.php:19
+#: index.php:611
+msgid "GitHub"
+msgstr ""
+
+#: footer.php:20
+#: index.php:612
+msgid "LinkedIn"
+msgstr ""
+
+#: footer.php:21
+#: index.php:613
+msgid "Twitter"
+msgstr ""
+
+#: footer.php:27
+msgid "NAVIGATE"
+msgstr ""
+
+#: footer.php:29
+msgid "Home"
+msgstr ""
+
+#: footer.php:30
+msgid "Work"
+msgstr ""
+
+#: footer.php:31
+msgid "Case Studies"
+msgstr ""
+
+#: footer.php:32
+msgid "Expertise"
+msgstr ""
+
+#: footer.php:33
+msgid "History"
+msgstr ""
+
+#: footer.php:39
+#: index.php:579
+msgid "CONTACT"
+msgstr ""
+
+#: footer.php:41
+#: index.php:591
+msgid "anisur2805@gmail.com"
+msgstr ""
+
+#: footer.php:42
+msgid "Joypurhat, Bangladesh (GMT+6)"
+msgstr ""
+
+#: footer.php:53
+msgid "STATUS"
+msgstr ""
+
+#: footer.php:57
+msgid "Available for new projects"
+msgstr ""
+
+#: footer.php:59
+msgid "Currently accepting selected enterprise WordPress inquiries."
+msgstr ""
+
+#: footer.php:66
+msgid "Anisur Rahman."
+msgstr ""
+
+#: footer.php:66
+msgid "All rights reserved."
+msgstr ""
+
+#: footer.php:69
+msgid "Built with WordPress"
+msgstr ""
+
+#: footer.php:70
+msgid "Senior WordPress Developer"
+msgstr ""
+
+#: functions.php:38
+msgid "Download Resume"
+msgstr ""
+
+#: functions.php:104
+#: functions.php:105
+msgid "Portfolio"
+msgstr ""
+
+#: functions.php:124
+msgid "Portfolio Settings"
+msgstr ""
+
+#: functions.php:126
+msgid "Point the resume buttons at a new file without touching code. Any URL works — a Google Drive link, an S3 object, or a file on your host."
+msgstr ""
+
+#: functions.php:133
+msgid "Resume URL"
+msgstr ""
+
+#: functions.php:141
+msgid "Button label"
+msgstr ""
+
+#: functions.php:148
+msgid "Show the button in"
+msgstr ""
+
+#: functions.php:152
+msgid "Header"
+msgstr ""
+
+#: functions.php:156
+msgid "Hero"
+msgstr ""
+
+#: functions.php:160
+msgid "Footer"
+msgstr ""
+
+#: functions.php:253
+msgid "Primary Menu"
+msgstr ""
+
+#: functions.php:281
+msgid "Seera Theme Settings"
+msgstr ""
+
+#: functions.php:283
+msgid "Customize your Seera portfolio theme."
+msgstr ""
+
+#: functions.php:291
+msgid "Hero Section"
+msgstr ""
+
+#: functions.php:364
+msgid "Statistics"
+msgstr ""
+
+#: functions.php:406
+msgid "Contact Information"
+msgstr ""
+
+#: functions.php:472
+msgid "reCAPTCHA v3 Site Key"
+msgstr ""
+
+#: functions.php:473
+msgid "Get keys from Google reCAPTCHA admin console and paste the site key here."
+msgstr ""
+
+#: functions.php:489
+msgid "reCAPTCHA v3 Secret Key"
+msgstr ""
+
+#: functions.php:490
+msgid "Secret key used on the server to verify reCAPTCHA tokens."
+msgstr ""
+
+#: header.php:45
+msgid "HOME"
+msgstr ""
+
+#: header.php:46
+#: index.php:368
+msgid "WORK"
+msgstr ""
+
+#: header.php:47
+msgid "CASES"
+msgstr ""
+
+#: header.php:48
+#: index.php:175
+msgid "EXPERTISE"
+msgstr ""
+
+#: header.php:49
+#: index.php:245
+msgid "HISTORY"
+msgstr ""
+
+#: header.php:64
+msgid "BOOK A CALL"
+msgstr ""
+
+#: header.php:67
+msgid "Toggle colour theme"
+msgstr ""
+
+#: header.php:72
+msgid "Open menu"
+msgstr ""
+
+#: index.php:19
+msgid "Available for New Opportunities"
+msgstr ""
+
+#: index.php:22
+msgid "Senior WordPress"
+msgstr ""
+
+#: index.php:23
+msgid "Developer &amp; Architect."
+msgstr ""
+
+#: index.php:26
+msgid "I build and scale custom WordPress: plugins, Gutenberg blocks and WooCommerce stores. 7+ years, 200+ sites, and measurable performance wins for clients in the US, UK and Germany."
+msgstr ""
+
+#: index.php:30
+msgid "Start a project"
+msgstr ""
+
+#: index.php:48
+msgid "DEV_WORKFLOW.PHP"
+msgstr ""
+
+#: index.php:70
+msgid "Key results"
+msgstr ""
+
+#: index.php:75
+msgid "Years in WordPress"
+msgstr ""
+
+#: index.php:79
+msgid "Sites Built &amp; Maintained"
+msgstr ""
+
+#: index.php:83
+msgid "Gutenberg Blocks Shipped"
+msgstr ""
+
+#: index.php:87
+msgid "Commercial Divi Modules"
+msgstr ""
+
+#: index.php:98
+msgid "Integrating with the ecosystem"
+msgstr ""
+
+#: index.php:103
+msgid "GUTENBERG"
+msgstr ""
+
+#: index.php:107
+msgid "REACT_JS"
+msgstr ""
+
+#: index.php:111
+msgid "DIVI"
+msgstr ""
+
+#: index.php:115
+msgid "ELEMENTOR"
+msgstr ""
+
+#: index.php:119
+msgid "BEAVER BUILDER"
+msgstr ""
+
+#: index.php:123
+msgid "ACF PRO"
+msgstr ""
+
+#: index.php:127
+msgid "WOOCOMMERCE"
+msgstr ""
+
+#: index.php:131
+msgid "STRIPE"
+msgstr ""
+
+#: index.php:135
+msgid "MEMBERPRESS"
+msgstr ""
+
+#: index.php:139
+msgid "AMAZON S3"
+msgstr ""
+
+#: index.php:143
+msgid "GOHIGHLEVEL"
+msgstr ""
+
+#: index.php:147
+msgid "PANTHEON"
+msgstr ""
+
+#: index.php:151
+msgid "QUERY MONITOR"
+msgstr ""
+
+#: index.php:161
+msgid "PHILOSOPHY"
+msgstr ""
+
+#: index.php:162
+msgid "The Philosophy of"
+msgstr ""
+
+#: index.php:162
+msgid "Clean Execution"
+msgstr ""
+
+#: index.php:165
+msgid "I architect WordPress ecosystems that scale. My approach bridges the gap between high-fidelity Figma designs and robust, performance-driven implementations. I specialize in modular architectures that prioritize developer velocity and long-term maintainability."
+msgstr ""
+
+#: index.php:166
+msgid "I leverage modern standards like PHPCS, Composer, and React.js to ensure every line of code meets enterprise requirements. My goal is simple: extreme performance and invisible stability."
+msgstr ""
+
+#: index.php:176
+msgid "Core Expertise"
+msgstr ""
+
+#: index.php:177
+msgid "Specializing in solutions for complex WP requirements."
+msgstr ""
+
+#: index.php:183
+msgid "Custom Plugin Development"
+msgstr ""
+
+#: index.php:184
+msgid "Production plugins built from scratch — architecture, REST endpoints, admin UI and release pipelines that pass PHPCS, WPCS and Plugin Check before they ship."
+msgstr ""
+
+#: index.php:188
+msgid "Gutenberg &amp; Block Engineering"
+msgstr ""
+
+#: index.php:189
+msgid "Dynamic blocks with PHP server-side rendering, React editors and block.json — plus full site editing themes built on theme.json, templates and patterns."
+msgstr ""
+
+#: index.php:193
+msgid "WooCommerce &amp; Performance"
+msgstr ""
+
+#: index.php:194
+msgid "Store builds and rescues: 5,000-product catalogues, multi-hub fulfilment, and query tuning that took one client's orders page from 3 seconds to 690ms."
+msgstr ""
+
+#: index.php:198
+msgid "Debugging &amp; Optimisation"
+msgstr ""
+
+#: index.php:199
+msgid "Plugin conflicts, migration failures and Core Web Vitals diagnosed with Query Monitor and WP_DEBUG — then fixed at the source instead of papered over."
+msgstr ""
+
+#: index.php:208
+msgid "THE STACK"
+msgstr ""
+
+#: index.php:209
+msgid "My Tech Stack"
+msgstr ""
+
+#: index.php:213
+msgid "LANGUAGES"
+msgstr ""
+
+#: index.php:215
+msgid "PHP 8.x (OOP)"
+msgstr ""
+
+#: index.php:216
+msgid "React.js"
+msgstr ""
+
+#: index.php:217
+msgid "ES6+ JavaScript"
+msgstr ""
+
+#: index.php:218
+msgid "SQL"
+msgstr ""
+
+#: index.php:222
+msgid "TOOLS & WORKFLOW"
+msgstr ""
+
+#: index.php:224
+msgid "Tailwind CSS"
+msgstr ""
+
+#: index.php:225
+msgid "Composer / NPM"
+msgstr ""
+
+#: index.php:226
+msgid "PHPCS / Linting"
+msgstr ""
+
+#: index.php:227
+msgid "Git / CI/CD"
+msgstr ""
+
+#: index.php:231
+msgid "WP SPECIALTY"
+msgstr ""
+
+#: index.php:233
+msgid "Divi / Elementor API"
+msgstr ""
+
+#: index.php:234
+msgid "Gutenberg Blocks"
+msgstr ""
+
+#: index.php:235
+msgid "WP REST API"
+msgstr ""
+
+#: index.php:236
+msgid "WooCommerce"
+msgstr ""
+
+#: index.php:246
+msgid "Professional History"
+msgstr ""
+
+#: index.php:253
+msgid "Freelance WordPress Developer"
+msgstr ""
+
+#: index.php:254
+msgid "Apr 2026 - Present"
+msgstr ""
+
+#: index.php:256
+msgid "Self-Employed (Remote)"
+msgstr ""
+
+#: index.php:258
+msgid "Maintain a custom WooCommerce store with about 5,000 products managed outside default WooCommerce: orders route to one of 3 fulfilment hubs based on product attributes and move through about 15 statuses, with customer emails and internal notifications on each change."
+msgstr ""
+
+#: index.php:259
+msgid "Cut the store's orders page load from over 3 seconds to about 690ms: traced about 1,289 queries to theme code that joined order data and searched serialized meta, replaced it with cached order IDs in a 12-hour transient, and brought database time from about 2,600ms to 46-97ms and queries to about 267."
+msgstr ""
+
+#: index.php:260
+msgid "Maintain 4 production WordPress sites after launch: regression-tested core and plugin updates, performance and SEO improvements, security hardening and backlog tasks with clients in the UK, Germany and the US."
+msgstr ""
+
+#: index.php:261
+msgid "Develop a workflow-driven WordPress CRM with custom PHP and REST APIs, consolidating a long-term US client's separate businesses into one system."
+msgstr ""
+
+#: index.php:270
+msgid "WordPress Plugin Developer"
+msgstr ""
+
+#: index.php:271
+msgid "Mar 2025 – Apr 2026"
+msgstr ""
+
+#: index.php:273
+msgid "Zone7 (Remote)"
+msgstr ""
+
+#: index.php:275
+msgid "Cut database query time 30% on a client site (90ms to 63ms on the homepage, Query Monitor) by indexing custom WPDB tables, caching repeated queries and cleaning autoloaded options."
+msgstr ""
+
+#: index.php:276
+msgid "Built 26 Divi modules on reusable PHP 8 and JavaScript OOP patterns for a commercial Divi 5 integration, collaborating with designers and PMs on a 2-week sprint cadence."
+msgstr ""
+
+#: index.php:277
+msgid "Worked in Gitflow: feature branches merged to develop, then to main after senior review, with my own code reviewed by a senior developer and reviewing others' in return."
+msgstr ""
+
+#: index.php:278
+msgid "Released commercial plugins with the team lead: built the zip from main after PHPCS, WPCS, Plugin Check and Divi Marketplace standard checks passed, then published it through EDD."
+msgstr ""
+
+#: index.php:279
+msgid "Troubleshot plugin and theme conflicts and migration failures on live client sites with Query Monitor and WP_DEBUG; covered frontend builds during developer absences."
+msgstr ""
+
+#: index.php:280
+msgid "Built an AI-assisted Module Factory that generates plugin and theme components from feature specs, reducing full-stack development time by 40% versus the team's prior average, measured across the 26 Divi modules."
+msgstr ""
+
+#: index.php:289
+#: index.php:322
+msgid "WordPress Developer"
+msgstr ""
+
+#: index.php:290
+msgid "Jan 2024 – Feb 2025"
+msgstr ""
+
+#: index.php:292
+msgid "WP Gigs (Remote)"
+msgstr ""
+
+#: index.php:294
+msgid "Built plugins with 30+ custom Gutenberg blocks, including dynamic blocks with PHP server-side rendering and React editors, plus custom post types and taxonomies with ACF."
+msgstr ""
+
+#: index.php:295
+msgid "Built the wpgigs.com custom theme, then migrated it to a Full Site Editing block theme using theme.json, templates, patterns and the Interactivity API."
+msgstr ""
+
+#: index.php:296
+msgid "Integrated Amazon S3 and MemberPress APIs to deliver 20,000+ media assets to 1,200+ active members."
+msgstr ""
+
+#: index.php:297
+msgid "Built a custom Gutenberg-based page builder on the REST API and block editor APIs; resolved urgent issues on Beaver Builder sites."
+msgstr ""
+
+#: index.php:306
+msgid "WordPress Theme and Plugin Developer"
+msgstr ""
+
+#: index.php:307
+msgid "Feb 2023 – Dec 2023"
+msgstr ""
+
+#: index.php:309
+msgid "ITclan BD"
+msgstr ""
+
+#: index.php:311
+msgid "Converted 20+ Figma designs into pixel-perfect, responsive, SEO-friendly WooCommerce websites of 15-25 pages each, tested across browsers and devices."
+msgstr ""
+
+#: index.php:312
+msgid "Built custom WooCommerce features: AJAX search, repair-based add-to-cart by brand, model and repair type, custom order PDFs and customer and owner emails (thesmartphone.nl); a referral points system (vapesprimetime.co.uk); and a custom membership registration on custom database tables (fcclubltd.com)."
+msgstr ""
+
+#: index.php:313
+msgid "Integrated the Aamar Pay payment gateway API. Built a multipurpose theme for the TemplateMonster marketplace in three variations (Corporate, Portfolio, WooCommerce) and added two designs to the Le Resto theme."
+msgstr ""
+
+#: index.php:323
+msgid "Oct 2019 – Feb 2023"
+msgstr ""
+
+#: index.php:325
+msgid "Orange Toolz"
+msgstr ""
+
+#: index.php:327
+msgid "Built and maintained 200+ corporate and medical WordPress sites for US clients using Elementor Pro and custom PHP, delivering ongoing monthly updates."
+msgstr ""
+
+#: index.php:328
+msgid "Maintained 40 sites on Pantheon, running theme, plugin and core updates with terminus across dev, multidev and live, using Pantheon backups."
+msgstr ""
+
+#: index.php:329
+msgid "Integrated GoHighLevel APIs for lead capture and conversion tracking across 10+ client practices."
+msgstr ""
+
+#: index.php:338
+msgid "Web Developer / Designer"
+msgstr ""
+
+#: index.php:339
+msgid "Apr 2016 – Oct 2019"
+msgstr ""
+
+#: index.php:341
+msgid "BeLocal Today (Remote) &amp; Softnio"
+msgstr ""
+
+#: index.php:343
+msgid "Built and optimized 50+ local-business WordPress sites for Gold Coast, Brisbane and Sunshine Coast clients: SEO, loading speed and Google Maps citations."
+msgstr ""
+
+#: index.php:344
+msgid "Converted Figma designs into responsive HTML, CSS and WordPress sites with CSS animations and cross-browser consistency."
+msgstr ""
+
+#: index.php:352
+msgid "EDUCATION"
+msgstr ""
+
+#: index.php:354
+msgid "Diploma in Computer Technology"
+msgstr ""
+
+#: index.php:355
+msgid "Naogaon Polytechnic Institute, Naogaon, Bangladesh | 2015"
+msgstr ""
+
+#: index.php:357
+msgid "Coursework toward B.Sc. in Computer Science and Engineering"
+msgstr ""
+
+#: index.php:358
+msgid "Bangladesh University, Dhaka"
+msgstr ""
+
+#: index.php:369
+msgid "Things I've built and shipped"
+msgstr ""
+
+#: index.php:370
+msgid "Live client sites, published plugins and open-source projects."
+msgstr ""
+
+#: index.php:374
+msgid "Client Sites"
+msgstr ""
+
+#: index.php:376
+msgid "Perfect Smiles Are Us"
+msgstr ""
+
+#: index.php:377
+msgid "Valley Home Health Services"
+msgstr ""
+
+#: index.php:378
+msgid "Zone7"
+msgstr ""
+
+#: index.php:383
+msgid "Published Plugins"
+msgstr ""
+
+#: index.php:387
+msgid "AR Back to Top"
+msgstr ""
+
+#: index.php:391
+msgid "ClanDevs Smart Catalog Filters"
+msgstr ""
+
+#: index.php:397
+msgid "Open Source on GitHub"
+msgstr ""
+
+#: index.php:401
+msgid "WooCommerce Mini Cart AJAX"
+msgstr ""
+
+#: index.php:406
+msgid "ProofPulse"
+msgstr ""
+
+#: index.php:410
+msgid "commerce-blocks"
+msgstr ""
+
+#: index.php:414
+msgid "tabskit-pro"
+msgstr ""
+
+#: index.php:425
+msgid "CASE STUDIES"
+msgstr ""
+
+#: index.php:426
+msgid "Selected Case Studies"
+msgstr ""
+
+#: index.php:427
+msgid "A glimpse into work built with precision."
+msgstr ""
+
+#: index.php:460
+msgid "Load More"
+msgstr ""
+
+#: index.php:472
+msgid "CONTRIBUTIONS"
+msgstr ""
+
+#: index.php:473
+msgid "Open Source Contribution"
+msgstr ""
+
+#: index.php:474
+msgid "I actively contribute to the WordPress core and maintain several high-traffic plugins on GitHub. I believe in giving back to the community that powers the web. My focus is on creating developer-friendly tools and modular architectures."
+msgstr ""
+
+#: index.php:479
+msgid "GIT COMMITS YTD"
+msgstr ""
+
+#: index.php:483
+msgid "ACTIVE PLUGINS"
+msgstr ""
+
+#: index.php:491
+msgid "FEATURED CONTRIBUTION"
+msgstr ""
+
+#: index.php:494
+msgid "bootscore /"
+msgstr ""
+
+#: index.php:495
+msgid "bootscore"
+msgstr ""
+
+#: index.php:497
+msgid "Active Contributor"
+msgstr ""
+
+#: index.php:499
+msgid "A powerful Bootstrap 5 based WordPress starter theme. I actively contribute to the core development and theme ecosystem."
+msgstr ""
+
+#: index.php:501
+msgid "View Source →"
+msgstr ""
+
+#: index.php:510
+msgid "anisur2805 /"
+msgstr ""
+
+#: index.php:511
+msgid "arpc-popup-creator"
+msgstr ""
+
+#: index.php:513
+msgid "Active"
+msgstr ""
+
+#: index.php:516
+#: index.php:521
+msgid "75% PHP"
+msgstr ""
+
+#: index.php:517
+#: index.php:522
+msgid "15% CSS"
+msgstr ""
+
+#: index.php:518
+#: index.php:523
+msgid "10% JS"
+msgstr ""
+
+#: index.php:539
+msgid "\"Best WordPress service on Fiverr. Always responsive, quick turnaround. Always very happy with the service.\""
+msgstr ""
+
+#: index.php:543
+msgid "Fiverr Client"
+msgstr ""
+
+#: index.php:544
+msgid "Verified Purchase"
+msgstr ""
+
+#: index.php:550
+msgid "\"Wonderful to work with. Highly skilled in updating and maintaining WordPress webpages, theme design, and customization.\""
+msgstr ""
+
+#: index.php:554
+msgid "Upwork Client"
+msgstr ""
+
+#: index.php:555
+msgid "Project Review"
+msgstr ""
+
+#: index.php:561
+msgid "\"Highly technical and detail-oriented. Successfully delivered a complex WordPress theme design and customization project ahead of schedule.\""
+msgstr ""
+
+#: index.php:565
+msgid "Enterprise Partner"
+msgstr ""
+
+#: index.php:566
+msgid "Technical Lead"
+msgstr ""
+
+#: index.php:580
+msgid "Have a project"
+msgstr ""
+
+#: index.php:580
+msgid "in mind?"
+msgstr ""
+
+#: index.php:582
+msgid ""
+"Tell me what you're building — a custom plugin, a WooCommerce store that needs\n"
+"\t\t\t\t\t\tto be faster, or a site that has outgrown its theme. I reply within one business day."
+msgstr ""
+
+#: index.php:590
+#: index.php:624
+msgid "Email"
+msgstr ""
+
+#: index.php:597
+msgid "Rather talk first?"
+msgstr ""
+
+#: index.php:598
+msgid "Book a 30-minute call"
+msgstr ""
+
+#: index.php:604
+msgid "Based in"
+msgstr ""
+
+#: index.php:605
+msgid "Joypurhat, Bangladesh &middot; GMT+6"
+msgstr ""
+
+#: index.php:620
+msgid "Name"
+msgstr ""
+
+#: index.php:621
+msgid "Your Name"
+msgstr ""
+
+#: index.php:625
+msgid "Your@email.com"
+msgstr ""
+
+#: index.php:628
+msgid "Phone"
+msgstr ""
+
+#: index.php:628
+#: index.php:632
+msgid "(optional)"
+msgstr ""
+
+#: index.php:632
+msgid "Subject"
+msgstr ""
+
+#: index.php:633
+msgid "Project type, topic, or question"
+msgstr ""
+
+#: index.php:636
+msgid "Message"
+msgstr ""
+
+#: index.php:637
+msgid "Your Message"
+msgstr ""
+
+#: index.php:640
+msgid "Website"
+msgstr ""
+
+#: index.php:643
+msgid "Send"
+msgstr ""

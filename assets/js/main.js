@@ -9,6 +9,23 @@ document.addEventListener('DOMContentLoaded', () => {
 		}
 	});
 
+	// Colour theme toggle
+	const themeToggle = document.querySelector('.theme-toggle');
+	const themeRoot = document.documentElement;
+
+	if (themeToggle) {
+		themeToggle.addEventListener('click', () => {
+			const next = themeRoot.getAttribute('data-theme') === 'light' ? 'dark' : 'light';
+			themeRoot.setAttribute('data-theme', next);
+
+			try {
+				window.localStorage.setItem('anisur-theme', next);
+			} catch (e) {
+				// Private browsing can block storage; the theme still switches.
+			}
+		});
+	}
+
 	// Mobile navigation toggle
 	const navToggle = document.querySelector('.nav-toggle');
 	const primaryNav = document.getElementById('site-navigation');
