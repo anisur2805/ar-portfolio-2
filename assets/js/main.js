@@ -43,8 +43,10 @@ document.addEventListener('DOMContentLoaded', () => {
 		});
 	}
 
-	// Reveal Animations on Scroll
-	const revealElements = document.querySelectorAll('.section, .card, .expertise-card, .case-study-card');
+	// Reveal Animations on Scroll.
+	// The hero is deliberately excluded: above-the-fold content must never be
+	// hidden behind JS, or the first screen flashes empty before it fades in.
+	const revealElements = document.querySelectorAll('.section:not(.hero-section), .card, .expertise-card, .case-study-card');
 	const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
 	// CSS for revealed state (defined before any element is hidden, so a later

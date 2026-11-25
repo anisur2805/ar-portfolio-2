@@ -277,13 +277,30 @@ function anisur_send_contact_email() {
 		wp_send_json_error( array( 'message' => 'Please provide a valid name, email, and message.' ) );
 	}
 
-	// reCAPTCHA v3 verification (if configured).
-	$recaptcha_secret = get_theme_mod( 'recaptcha_secret_key', '' );
-	if ( ! empty( $recaptcha_secret ) ) {
-		if ( empty( $recaptcha ) ) {
-			wp_send_json_error( array( 'message' => 'reCAPTCHA verification failed. Please try again.' ) );
-		}
+	// Time trap: no human can focus three fields and type a message this soon
+	// after the page loads. Bots driving the real form submit instantly, so
+	// they are caught here with no third-party service involved.
+	//
+	// A missing `elapsed` is allowed rather than blocked: a visitor with cached
+	// markup, or one who posts directly, must not be locked out, and the
+	// honeypot plus the rate limit below still cover that case.
+	$elapsed = isset( $_POST['elapsed'] ) ? (int) $_POST['elapsed'] : -1;
+	if ( $elapsed >= 0 && $elapsed < 3 ) {
+		// Pretend success so the bot learns nothing.
+		wp_send_json_success();
+	}
 
+	// reCAPTCHA v3 verification (only when a key AND a token are present).
+	//
+	// This must never take the form down. Keys get deprecated, hostname-locked
+	// to another domain, or Google can be unreachable — failing closed in any
+	// of those cases locks out every real visitor. So only an actual low score
+	// or a malformed/replayed token is rejected; configuration problems are
+	// logged loudly and allowed through. An absent token (an ad blocker, or a
+	// script that failed to load) skips this block entirely for the same reason.
+	$recaptcha_secret = get_theme_mod( 'recaptcha_secret_key', '' );
+
+	if ( ! empty( $recaptcha_secret ) && ! empty( $recaptcha ) ) {
 		$verify_response = wp_remote_post(
 			'https://www.google.com/recaptcha/api/siteverify',
 			array(
@@ -297,14 +314,23 @@ function anisur_send_contact_email() {
 		);
 
 		if ( is_wp_error( $verify_response ) ) {
-			wp_send_json_error( array( 'message' => 'Unable to verify reCAPTCHA. Please try again later.' ) );
-		}
+			error_log( 'reCAPTCHA unreachable, allowing submission: ' . $verify_response->get_error_message() );
+		} else {
+			$verify_body = json_decode( wp_remote_retrieve_body( $verify_response ), true );
+			$verify_body = is_array( $verify_body ) ? $verify_body : array();
+			$error_codes = ! empty( $verify_body['error-codes'] ) && is_array( $verify_body['error-codes'] ) ? $verify_body['error-codes'] : array();
+			$score       = isset( $verify_body['score'] ) ? (float) $verify_body['score'] : -1;
 
-		$verify_body = json_decode( wp_remote_retrieve_body( $verify_response ), true );
+			// Problems with the setup itself, not with the visitor: a
+			// deprecated key, a wrong secret, an unregistered hostname.
+			$config_markers = array( 'invalid-input-secret', 'missing-input-secret', 'invalid-keys', 'hostname-mismatch', 'recaptcha-not-enabled' );
+			$is_config      = array_intersect( $error_codes, $config_markers ) || (bool) preg_grep( '/migrate your key/i', $error_codes );
 
-		// Require success and a reasonable score when using reCAPTCHA v3.
-		if ( empty( $verify_body['success'] ) || ( isset( $verify_body['score'] ) && (float) $verify_body['score'] < 0.5 ) ) {
-			wp_send_json_error( array( 'message' => 'reCAPTCHA verification failed. Please try again.' ) );
+			if ( empty( $verify_body['success'] ) && $is_config ) {
+				error_log( 'reCAPTCHA config problem, allowing submission: ' . implode( ', ', $error_codes ) );
+			} elseif ( empty( $verify_body['success'] ) || $score < 0.5 ) {
+				wp_send_json_error( array( 'message' => 'reCAPTCHA verification failed. Please try again.' ) );
+			}
 		}
 	}
 
@@ -328,29 +354,96 @@ function anisur_send_contact_email() {
 		$subject .= ' – ' . $user_subject;
 	}
 
-	$body_lines   = array();
-	$body_lines[] = 'You have received a new message from your portfolio contact form.';
-	$body_lines[] = '';
-	$body_lines[] = 'Name: ' . $name;
-	$body_lines[] = 'Email: ' . $email;
+	$submitted_at = current_time( 'F j, Y g:i a' );
+	$site_url     = home_url();
 
-	if ( ! empty( $phone ) ) {
-		$body_lines[] = 'Phone: ' . $phone;
+	// ---- Plain-text alternative -------------------------------------------
+	// Every HTML mail should ship a text twin: clients that block HTML can
+	// still read it, and spam filters penalise HTML-only messages.
+	$text_lines = array(
+		'New portfolio inquiry',
+		'',
+		'Name:    ' . $name,
+		'Email:   ' . $email,
+	);
+
+	if ( '' !== $phone ) {
+		$text_lines[] = 'Phone:   ' . $phone;
 	}
 
-	if ( ! empty( $user_subject ) ) {
-		$body_lines[] = 'Subject: ' . $user_subject;
+	if ( '' !== $user_subject ) {
+		$text_lines[] = 'Subject: ' . $user_subject;
 	}
 
-	$body_lines[] = '';
-	$body_lines[] = 'Message:';
-	$body_lines[] = $message;
-	$body_lines[] = '';
-	$body_lines[] = '---';
-	$body_lines[] = 'Submitted from: ' . home_url();
-	$body_lines[] = 'Date: ' . current_time( 'F j, Y g:i a' );
+	$text_lines[] = '';
+	$text_lines[] = 'Message:';
+	$text_lines[] = $message;
+	$text_lines[] = '';
+	$text_lines[] = '---';
+	$text_lines[] = 'Submitted from: ' . $site_url;
+	$text_lines[] = 'Date: ' . $submitted_at;
 
-	$body = implode( "\n", $body_lines );
+	$body_text = implode( "\n", $text_lines );
+
+	// ---- HTML body --------------------------------------------------------
+	// The visitor controls name/email/subject/message, so anything interpolated
+	// into this markup is escaped — otherwise a crafted submission could inject
+	// HTML into the notification (and into any mail client that renders it).
+	$font      = "-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif";
+	$label_css = "padding:11px 0;border-bottom:1px solid #eceff3;width:104px;vertical-align:top;font:600 11px/1.4 {$font};letter-spacing:.08em;text-transform:uppercase;color:#7b8794;";
+	$value_css = "padding:11px 0;border-bottom:1px solid #eceff3;vertical-align:top;font:400 15px/1.5 {$font};color:#111a22;";
+
+	$rows = array(
+		array( 'Name', esc_html( $name ) ),
+		array(
+			'Email',
+			'<a href="mailto:' . esc_attr( $email ) . '" style="color:#0d7a63;text-decoration:none;">' . esc_html( $email ) . '</a>',
+		),
+	);
+
+	if ( '' !== $phone ) {
+		$rows[] = array( 'Phone', esc_html( $phone ) );
+	}
+
+	if ( '' !== $user_subject ) {
+		$rows[] = array( 'Subject', esc_html( $user_subject ) );
+	}
+
+	$rows_html = '';
+	foreach ( $rows as $row ) {
+		$rows_html .= '<tr>'
+			. '<td style="' . $label_css . '">' . $row[0] . '</td>'
+			. '<td style="' . $value_css . '">' . $row[1] . '</td>'
+			. '</tr>';
+	}
+
+	$body_html = '<!DOCTYPE html><html><head><meta charset="utf-8">'
+		. '<meta name="viewport" content="width=device-width,initial-scale=1">'
+		. '<title>New portfolio inquiry</title></head>'
+		. '<body style="margin:0;padding:0;background:#f2f5f7;">'
+		. '<table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background:#f2f5f7;padding:28px 12px;">'
+		. '<tr><td align="center">'
+		. '<table role="presentation" width="600" cellpadding="0" cellspacing="0" style="max-width:600px;width:100%;background:#ffffff;border:1px solid #e4e9ee;border-radius:10px;">'
+		. '<tr><td style="background:#050a0f;padding:22px 28px;border-radius:9px 9px 0 0;">'
+		. '<div style="font:700 12px/1 ' . $font . ';letter-spacing:.18em;text-transform:uppercase;color:#00d1a0;">New Portfolio Inquiry</div>'
+		. '<div style="margin-top:9px;font:400 13px/1.4 ' . $font . ';color:#9fb0be;">' . esc_html( $site_url ) . '</div>'
+		. '</td></tr>'
+		. '<tr><td style="padding:8px 28px 0;">'
+		. '<table role="presentation" width="100%" cellpadding="0" cellspacing="0">' . $rows_html . '</table>'
+		. '</td></tr>'
+		. '<tr><td style="padding:26px 28px 0;">'
+		. '<div style="font:600 11px/1.4 ' . $font . ';letter-spacing:.08em;text-transform:uppercase;color:#7b8794;margin-bottom:10px;">Message</div>'
+		. '<div style="border-left:3px solid #00d1a0;background:#f7fafb;border-radius:0 6px 6px 0;padding:16px 18px;font:400 15px/1.65 ' . $font . ';color:#111a22;">' . nl2br( esc_html( $message ) ) . '</div>'
+		. '</td></tr>'
+		. '<tr><td style="padding:26px 28px 4px;">'
+		. '<a href="mailto:' . esc_attr( $email ) . '?subject=' . rawurlencode( 'Re: ' . $subject ) . '" style="display:inline-block;background:#00d1a0;color:#04121a;font:700 13px/1 ' . $font . ';letter-spacing:.06em;text-transform:uppercase;text-decoration:none;padding:14px 24px;border-radius:4px;">Reply to ' . esc_html( $name ) . '</a>'
+		. '</td></tr>'
+		. '<tr><td style="padding:20px 28px 26px;">'
+		. '<div style="border-top:1px solid #eceff3;padding-top:16px;font:400 12px/1.7 ' . $font . ';color:#98a4b0;">'
+		. 'Submitted from ' . esc_html( $site_url ) . '<br>Date: ' . esc_html( $submitted_at )
+		. '</div></td></tr>'
+		. '</table>'
+		. '</td></tr></table></body></html>';
 
 	// Always send from the site's own address so SPF/DKIM pass. The visitor's
 	// address belongs in Reply-To, never in From (that would look like spoofing
@@ -360,13 +453,16 @@ function anisur_send_contact_email() {
 		$from_email = 'anisur2805@gmail.com';
 	}
 
+	// Hand the text twin to the phpmailer_init hook below.
+	$GLOBALS['anisur_contact_email_text'] = $body_text;
+
 	$headers = array(
-		'Content-Type: text/plain; charset=UTF-8',
+		'Content-Type: text/html; charset=UTF-8',
 		'From: ' . $from_email,
 		'Reply-To: ' . $name . ' <' . $email . '>',
 	);
 
-	if ( wp_mail( $to, $subject, $body, $headers ) ) {
+	if ( wp_mail( $to, $subject, $body_html, $headers ) ) {
 		wp_send_json_success();
 	} else {
 		error_log( "Contact Form Email Failed: $to, $subject" );
@@ -375,6 +471,32 @@ function anisur_send_contact_email() {
 }
 add_action( 'wp_ajax_send_contact_email', 'anisur_send_contact_email' );
 add_action( 'wp_ajax_nopriv_send_contact_email', 'anisur_send_contact_email' );
+
+/**
+ * Attach the plain-text alternative to the contact notification.
+ *
+ * wp_mail() only carries one body, so the text version is passed through a
+ * global that this hook picks up during the same send. Setting PHPMailer's
+ * AltBody turns the message into multipart/alternative.
+ *
+ * The charset is forced here too: WordPress does not always forward the
+ * charset from the Content-Type header, and PHPMailer falls back to us-ascii,
+ * which mangles any non-English character the visitor typed.
+ *
+ * Both are scoped to this one send so no other email on the site changes.
+ */
+function anisur_contact_email_alt_body( $phpmailer ) {
+	$text = isset( $GLOBALS['anisur_contact_email_text'] ) ? $GLOBALS['anisur_contact_email_text'] : '';
+
+	if ( '' === $text ) {
+		return;
+	}
+
+	$phpmailer->AltBody                   = $text;
+	$phpmailer->CharSet                   = 'UTF-8';
+	$GLOBALS['anisur_contact_email_text'] = '';
+}
+add_action( 'phpmailer_init', 'anisur_contact_email_alt_body' );
 
 /**
  * Log the real reason wp_mail failed so the admin can debug SMTP issues.

@@ -29,7 +29,7 @@
 	
 	/* Layout */
 	--container-width: 1200px;
-	--section-padding: 120px;
+	--section-padding: 84px;
 	--card-radius: 4px;
 	
 	/* Effects */
@@ -81,6 +81,20 @@ h1, h2, h3, h4, h5, h6 {
 h1 { font-size: clamp(2.5rem, 6vw, 4.5rem); }
 h2 { font-size: clamp(2rem, 5vw, 3.5rem); }
 h3 { font-size: clamp(1.5rem, 4vw, 2.5rem); }
+
+/* Section headings sit one step above the base h3 scale so each block reads
+   as a distinct chapter instead of blending into the body copy. */
+.section-title {
+	font-size: clamp(1.85rem, 4.6vw, 2.85rem);
+	line-height: 1.12;
+}
+
+/* Anchored sections would otherwise disappear under the fixed header when
+   reached from the nav. */
+#hero, #ecosystem, #philosophy, #expertise, #stack, #history,
+#projects, #open-source, #blog, #testimonials, #contact {
+	scroll-margin-top: 96px;
+}
 
 p {
 	color: var(--text-secondary);
@@ -560,10 +574,33 @@ img {
    Hero Section
    ========================================================================== */
 .hero-section {
-	min-height: 80vh;
+	min-height: 74vh;
 	display: flex;
 	align-items: center;
-	padding-top: 160px;
+	padding-top: 150px;
+	padding-bottom: 72px;
+	position: relative;
+	overflow: hidden;
+}
+
+/* Soft accent glow behind the hero so the first screen reads as designed,
+   not as an empty page. */
+.hero-section::before {
+	content: '';
+	position: absolute;
+	top: -20%;
+	right: -10%;
+	width: 620px;
+	height: 620px;
+	background: radial-gradient(circle, rgba(0, 209, 160, 0.16) 0%, rgba(0, 209, 160, 0) 68%);
+	pointer-events: none;
+	z-index: 0;
+}
+
+.hero-container,
+.hero-section .container {
+	position: relative;
+	z-index: 1;
 }
 
 .hero-container {
@@ -749,7 +786,7 @@ img {
    Ecosystem Section
    ========================================================================== */
 .ecosystem-section {
-	padding: 80px 0;
+	padding: 56px 0;
 	border-top: 1px solid var(--border-glass);
 	border-bottom: 1px solid var(--border-glass);
 	background: var(--bg-secondary);
@@ -1882,13 +1919,13 @@ img {
    Footer CTA Banner
    ========================================================================== */
 .footer-cta {
-	padding: 80px 0;
+	padding: 64px 0;
 	background: var(--bg-primary);
 }
 
 .cta-banner {
 	background: var(--accent-primary);
-	padding: 100px 60px;
+	padding: 68px 48px;
 	border-radius: var(--card-radius);
 	text-align: center;
 }
@@ -1919,7 +1956,7 @@ img {
    Footer Section
    ========================================================================== */
 .site-footer {
-	padding: 100px 0 40px;
+	padding: 72px 0 32px;
 	background: var(--bg-primary);
 	border-top: 1px solid var(--border-glass);
 	position: relative;
@@ -2465,5 +2502,98 @@ img {
 
 	.contact-heading {
 		margin-bottom: 36px;
+	}
+}
+
+/* ==========================================================================
+   Design polish — tighter spacing rhythm on small screens,
+   plus the quantified credibility band under the hero.
+   ========================================================================== */
+@media screen and (max-width: 900px) {
+	:root {
+		--section-padding: 64px;
+	}
+}
+
+@media screen and (max-width: 640px) {
+	:root {
+		--section-padding: 52px;
+	}
+
+	.hero-section {
+		padding-top: 118px;
+		padding-bottom: 52px;
+		min-height: auto;
+	}
+
+	.ecosystem-section {
+		padding: 40px 0;
+	}
+}
+
+/* Credibility band — hard numbers directly under the hero, so a visitor sees
+   proof before they decide whether to keep scrolling. */
+.stats-band {
+	background: var(--bg-secondary);
+	border-top: 1px solid var(--border-glass);
+	border-bottom: 1px solid var(--border-glass);
+	padding: 38px 0;
+}
+
+.stats-grid {
+	display: grid;
+	grid-template-columns: repeat(4, 1fr);
+	gap: 24px;
+}
+
+.stat-item {
+	position: relative;
+	text-align: center;
+	padding: 4px 12px;
+}
+
+.stat-item + .stat-item::before {
+	content: '';
+	position: absolute;
+	left: 0;
+	top: 16%;
+	height: 68%;
+	width: 1px;
+	background: var(--border-glass);
+}
+
+.stat-value {
+	display: block;
+	font-family: 'Outfit', var(--font-primary);
+	font-size: clamp(1.75rem, 3.4vw, 2.5rem);
+	font-weight: 800;
+	line-height: 1;
+	letter-spacing: -0.03em;
+	color: var(--accent-primary);
+}
+
+.stat-label {
+	display: block;
+	margin-top: 8px;
+	font-size: 12px;
+	font-weight: 600;
+	letter-spacing: 0.08em;
+	text-transform: uppercase;
+	color: var(--text-secondary);
+}
+
+@media screen and (max-width: 768px) {
+	.stats-band {
+		padding: 30px 0;
+	}
+
+	.stats-grid {
+		grid-template-columns: repeat(2, 1fr);
+		gap: 26px 16px;
+	}
+
+	/* A vertical divider only reads correctly in a single row. */
+	.stat-item + .stat-item::before {
+		display: none;
 	}
 }

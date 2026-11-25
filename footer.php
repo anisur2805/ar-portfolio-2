@@ -57,7 +57,7 @@
 				</div>
 				<div class="footer-meta">
 					<span class="meta-item">Built with WordPress</span>
-					<span class="meta-item">Senior Systems Engineer</span>
+					<span class="meta-item">Senior WordPress Developer</span>
 				</div>
 			</div>
 		</div>

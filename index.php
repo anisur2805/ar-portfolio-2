@@ -14,10 +14,10 @@ get_header();
 				</div>
 				<h1 class="hero-title">
 					Senior WordPress<br>
-					<span class="accent-text">Systems Engineer.</span>
+					<span class="accent-text">Developer &amp; Architect.</span>
 				</h1>
 				<p class="hero-description">
-					Expert in scalable plugin architecture and enterprise-grade theme ecosystems. Specialist in Gutenberg block engineering, React-driven interfaces, and performance optimization.
+					I build and scale custom WordPress: plugins, Gutenberg blocks and WooCommerce stores. 7+ years, 200+ sites, and measurable performance wins for clients in the US, UK and Germany.
 				</p>
 				
 				<div class="hero-cta">
@@ -53,6 +53,30 @@ get_header();
 <span class="line"><span class="num">11</span> </span>
 <span class="line"><span class="cursor">| -</span></span></code></pre>
 					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<!-- CREDIBILITY BAND -->
+	<section class="stats-band" aria-label="Key results">
+		<div class="container">
+			<div class="stats-grid">
+				<div class="stat-item">
+					<span class="stat-value">7+</span>
+					<span class="stat-label">Years in WordPress</span>
+				</div>
+				<div class="stat-item">
+					<span class="stat-value">200+</span>
+					<span class="stat-label">Sites Built &amp; Maintained</span>
+				</div>
+				<div class="stat-item">
+					<span class="stat-value">30+</span>
+					<span class="stat-label">Gutenberg Blocks Shipped</span>
+				</div>
+				<div class="stat-item">
+					<span class="stat-value">26</span>
+					<span class="stat-label">Commercial Divi Modules</span>
 				</div>
 			</div>
 		</div>

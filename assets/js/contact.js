@@ -3,6 +3,10 @@ jQuery(document).ready(function($) {
     const $submitBtn = $form.find('button[type="submit"]');
     const originalBtnText = $submitBtn.text();
 
+    // Used by the server-side time trap: no human can type a message within
+    // seconds of the page appearing, but scripted browsers can.
+    const pageLoadedAt = Date.now();
+
     $form.on('submit', function(e) {
         e.preventDefault();
 
@@ -39,7 +43,8 @@ jQuery(document).ready(function($) {
                     subject: subject,
                     phone: phone,
                     website: website,
-                    recaptcha_token: recaptchaToken || ''
+                    recaptcha_token: recaptchaToken || '',
+                    elapsed: Math.round((Date.now() - pageLoadedAt) / 1000)
                 },
                 success: function(response) {
                     if (response.success) {
