@@ -1502,15 +1502,6 @@ img {
 }
 
 /* Download Resume button under the "Professional History" heading */
-.history-header-cta {
-	margin-top: 20px;
-	margin-bottom: -20px;
-}
-
-.history-header-cta .btn-resume {
-	width: auto;
-}
-
 .timeline-v2::before {
 	content: '';
 	position: absolute;
@@ -2064,8 +2055,17 @@ img {
 	color: var(--text-muted);
 }
 
+/* The footer column is only ~208px wide, so the default button padding and
+   letter-spacing wrapped "Download Resume" onto two lines and stranded the
+   icon on the first. Full width, centred content and tighter tracking keep it
+   on a single line. */
 .footer-resume-btn {
 	margin-top: 18px;
+	width: 100%;
+	justify-content: center;
+	padding: 12px;
+	font-size: 12px;
+	letter-spacing: 0.06em;
 }
 
 /* Status Col */

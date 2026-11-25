@@ -204,11 +204,6 @@ get_header();
 		<div class="container container-narrow">
 			<h2 class="section-badge text-center">HISTORY</h2>
 			<h3 class="section-title text-center">Professional History</h3>
-			<div class="history-header-cta">
-				<a href="<?php echo esc_url( anisur_get_resume_url() ); ?>" class="btn btn-resume" target="_blank" rel="noopener" download>
-					<i class="fa-solid fa-download" aria-hidden="true"></i> Download Resume
-				</a>
-			</div>
 
 			<div class="timeline-v2">
 				<div class="timeline-v2-item">
